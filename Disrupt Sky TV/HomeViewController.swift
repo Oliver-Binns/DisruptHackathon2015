@@ -11,7 +11,8 @@ import MapKit
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
-    var locationManager: CLLocationManager?;
+    var locationManager: CLLocationManager?
+    var media: [Media] = []
     @IBOutlet var collectionView: UICollectionView!
     
     let timeLabel = UILabel()
@@ -21,14 +22,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view.
         
         //SETUP Device IDs
-        let defaults = NSUserDefaults.standardUserDefaults();
-        defaults.setValue("7bb60c9bf819183910b2473288388d834518ea2a", forKey: "subscriberId");
-        defaults.setValue("enihdiehqwtfw", forKey: "deviceId");
-        defaults.synchronize();
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setValue("7bb60c9bf819183910b2473288388d834518ea2a", forKey: "subscriberId")
+        defaults.setValue("enihdiehqwtfw", forKey: "deviceId")
+        defaults.synchronize()
         
         //SETUP Location
         self.locationManager = CLLocationManager.sharedManager
-        self.locationManager!.delegate = self;
+        self.locationManager!.delegate = self
         self.locationManager!.requestAlwaysAuthorization() //Displays alert view to request location use
         self.locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager!.startUpdatingLocation()
@@ -56,18 +57,21 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
-        DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: printData);
+        DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: updateCollectionView)
     }
+    
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         if(newLocation.distanceFromLocation(oldLocation) > 500){
-            DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: printData);
+            DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: updateCollectionView)
         }
     }
     
-    func printData(succeeded: Bool, request: [Media]){
-        for(var i = 0; i < request.count; i++){
-            print(request[i].title);
-        }
+    func updateCollectionView(succeeded: Bool, request: [Media]){
+        self.media = request
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.collectionView.reloadData()
+        })
     }
     
     func updateTime() {
@@ -96,7 +100,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         
         let attributedString = NSMutableAttributedString(string: timeString)
         
-        let attributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(17)]
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(18)]
         let boldString = NSMutableAttributedString(string: timeOfDayString, attributes: attributes)
         
         attributedString.appendAttributedString(boldString)
@@ -119,18 +123,19 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         if section == 0 {
             return 1
         } else {
-            return 30 //Replace with recommendations.count
+            return self.media.count
         }
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        print(indexPath.section)
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("resumeCell", forIndexPath: indexPath) as! ResumeCell
             
             return cell
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("contentCell", forIndexPath: indexPath) as! ContentCell
+            
+            cell.showImageView.image = media[indexPath.row].image
             
             return cell
         }
@@ -141,7 +146,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         let contentWidth = floor(view.frame.width / 4)
         
         if indexPath.section == 0 {
-            return CGSizeMake(resumeWidth, resumeWidth)
+            return CGSizeMake(resumeWidth - 10, 140)
         } else {
             return CGSizeMake(contentWidth - 5, contentWidth / 2)
         }

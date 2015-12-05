@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H6J-VZ-sRi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H6J-VZ-sRi">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7AH-I3-OOj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="35" width="600" height="565"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="gcv-xJ-WnS">
@@ -45,13 +45,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
                                                     <animations/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Resume 'Show Title'" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8I-wW-aok">
-                                                    <rect key="frame" x="0.0" y="98" width="600" height="48"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resume 'Show Title'" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8I-wW-aok">
+                                                    <rect key="frame" x="0.0" y="8" width="580" height="138"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="48" id="T3S-dR-Vka"/>
+                                                        <constraint firstAttribute="height" constant="138" id="T3S-dR-Vka"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -66,7 +66,7 @@
                                             <constraint firstAttribute="trailing" secondItem="O8I-wW-aok" secondAttribute="trailing" id="GhC-Xl-MFz"/>
                                             <constraint firstItem="1G5-p1-RuI" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="Io6-9P-KYw"/>
                                             <constraint firstItem="SZZ-I4-gpp" firstAttribute="centerY" secondItem="1G5-p1-RuI" secondAttribute="centerY" id="PAJ-t2-Yse"/>
-                                            <constraint firstItem="O8I-wW-aok" firstAttribute="top" secondItem="IhF-wf-esG" secondAttribute="top" constant="98" id="Uyz-hk-Or7"/>
+                                            <constraint firstItem="O8I-wW-aok" firstAttribute="top" secondItem="IhF-wf-esG" secondAttribute="top" constant="8" id="Uyz-hk-Or7"/>
                                             <constraint firstItem="SZZ-I4-gpp" firstAttribute="centerX" secondItem="1G5-p1-RuI" secondAttribute="centerX" id="YLT-0h-LYk"/>
                                             <constraint firstAttribute="trailing" secondItem="1G5-p1-RuI" secondAttribute="trailing" id="ZzT-ii-aso"/>
                                             <constraint firstItem="O8I-wW-aok" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="egn-9c-jmr"/>
@@ -97,6 +97,9 @@
                                             <constraint firstAttribute="bottom" secondItem="zuB-1Y-GxH" secondAttribute="bottom" id="zs7-io-0bK"/>
                                         </constraints>
                                         <size key="customSize" width="150" height="150"/>
+                                        <connections>
+                                            <outlet property="showImageView" destination="zuB-1Y-GxH" id="YsP-P6-TfU"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -110,7 +113,7 @@
                         <constraints>
                             <constraint firstItem="7AH-I3-OOj" firstAttribute="leading" secondItem="Oal-2c-fPC" secondAttribute="leading" id="2qD-eo-Tve"/>
                             <constraint firstItem="4Rq-iN-sqX" firstAttribute="top" secondItem="7AH-I3-OOj" secondAttribute="bottom" id="NFi-yU-OB8"/>
-                            <constraint firstItem="7AH-I3-OOj" firstAttribute="top" secondItem="XEw-xt-EsU" secondAttribute="bottom" constant="-64" id="SSK-Fs-XQo"/>
+                            <constraint firstItem="7AH-I3-OOj" firstAttribute="top" secondItem="XEw-xt-EsU" secondAttribute="bottom" constant="-29" id="SSK-Fs-XQo"/>
                             <constraint firstAttribute="trailing" secondItem="7AH-I3-OOj" secondAttribute="trailing" id="Y7A-gC-HBU"/>
                         </constraints>
                     </view>
