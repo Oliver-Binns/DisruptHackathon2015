@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
+    var locationManager: CLLocationManager?;
     @IBOutlet var collectionView: UICollectionView!
     
     let timeLabel = UILabel()
@@ -18,12 +20,29 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        //SETUP Device IDs
+        let defaults = NSUserDefaults.standardUserDefaults();
+        defaults.setValue("7bb60c9bf819183910b2473288388d834518ea2a", forKey: "subscriberId");
+        defaults.setValue("enihdiehqwtfw", forKey: "deviceId");
+        defaults.synchronize();
+        
+        //SETUP Location
+        self.locationManager = CLLocationManager.sharedManager
+        self.locationManager!.delegate = self;
+        self.locationManager!.requestAlwaysAuthorization() //Displays alert view to request location use
+        self.locationManager!.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager!.startUpdatingLocation()
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager!.requestWhenInUseAuthorization()
+        }
+        
         let rightBarButtonItemOne: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Settings Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "oneTapped:")
         rightBarButtonItemOne.tintColor = UIColor.whiteColor()
         let rightBarButtonItemTwo: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Notification Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "twoTapped:")
         rightBarButtonItemTwo.tintColor = UIColor.whiteColor()
         let rightBarButtonItemThree: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Search Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "threeTapped:")
         rightBarButtonItemThree.tintColor = UIColor.whiteColor()
+
         self.navigationItem.setRightBarButtonItems([rightBarButtonItemOne, rightBarButtonItemTwo, rightBarButtonItemThree], animated: true)
         
         timeLabel.textAlignment = NSTextAlignment.Left
@@ -34,6 +53,21 @@ class HomeViewController: UIViewController {
         
         updateTime()
         var _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateTime", userInfo: nil, repeats: true)
+    }
+    
+    func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
+        DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: printData);
+    }
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        if(newLocation.distanceFromLocation(oldLocation) > 500){
+            DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: printData);
+        }
+    }
+    
+    func printData(succeeded: Bool, request: [Media]){
+        for(var i = 0; i < request.count; i++){
+            print(request[i].title);
+        }
     }
     
     func updateTime() {

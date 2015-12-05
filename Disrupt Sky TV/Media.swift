@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Media: NSObject {
     enum Genre {
@@ -18,16 +19,18 @@ class Media: NSObject {
     }
     
     var title: String?
-    var duration: String?
+    var duration: Int?
     var genre: Genre?
     var subGenre: String?
     var channel: String?
+    var image: UIImage?
     
-    init(title: String?, duration: String?, genre: Genre?, subGenre: String?, channel: String?) {
+    init(title: String?, duration: Int?, genre: Genre?, subGenre: String?, channel: String?, image: NSURL?) {
         self.title = title
         self.duration = duration
         self.genre = genre
         self.subGenre = subGenre
         self.channel = channel
+        self.image = UIImage(data: NSData(contentsOfURL: image!)!)
     }
 }
