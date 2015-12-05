@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H6J-VZ-sRi">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--For You-->
         <scene sceneID="53X-cQ-VGs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Cy3-DN-u5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="nrh-kJ-3Ll" customClass="HomeViewController" customModule="Disrupt_Sky_TV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XEw-xt-EsU"/>
@@ -18,36 +16,109 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kko-Pa-QcC">
-                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7AH-I3-OOj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oth-wG-It5">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gcv-xJ-WnS">
+                                    <size key="itemSize" width="600" height="154"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="resumeCell" id="IhF-wf-esG" customClass="ResumeCell" customModule="Disrupt_Sky_TV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="64" width="600" height="154"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Resume Image Demo" translatesAutoresizingMaskIntoConstraints="NO" id="1G5-p1-RuI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="154" id="cjQ-nW-LDn"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZZ-I4-gpp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                                    <animations/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resume 'Show Title'" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8I-wW-aok">
+                                                    <rect key="frame" x="0.0" y="98" width="600" height="48"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="T3S-dR-Vka"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="1G5-p1-RuI" secondAttribute="bottom" id="AJM-mz-pmf"/>
+                                            <constraint firstItem="1G5-p1-RuI" firstAttribute="top" secondItem="IhF-wf-esG" secondAttribute="top" id="G85-AI-JjY"/>
+                                            <constraint firstAttribute="trailing" secondItem="O8I-wW-aok" secondAttribute="trailing" id="GhC-Xl-MFz"/>
+                                            <constraint firstItem="1G5-p1-RuI" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="Io6-9P-KYw"/>
+                                            <constraint firstItem="SZZ-I4-gpp" firstAttribute="centerY" secondItem="1G5-p1-RuI" secondAttribute="centerY" id="PAJ-t2-Yse"/>
+                                            <constraint firstItem="O8I-wW-aok" firstAttribute="top" secondItem="IhF-wf-esG" secondAttribute="top" constant="98" id="Uyz-hk-Or7"/>
+                                            <constraint firstItem="SZZ-I4-gpp" firstAttribute="centerX" secondItem="1G5-p1-RuI" secondAttribute="centerX" id="YLT-0h-LYk"/>
+                                            <constraint firstAttribute="trailing" secondItem="1G5-p1-RuI" secondAttribute="trailing" id="ZzT-ii-aso"/>
+                                            <constraint firstItem="O8I-wW-aok" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="egn-9c-jmr"/>
+                                            <constraint firstItem="SZZ-I4-gpp" firstAttribute="top" secondItem="1G5-p1-RuI" secondAttribute="bottom" constant="-154" id="lJl-FM-Akn"/>
+                                            <constraint firstItem="SZZ-I4-gpp" firstAttribute="leading" secondItem="1G5-p1-RuI" secondAttribute="trailing" constant="-600" id="sAN-Uv-3Yl"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contentCell" id="pfP-ir-0XC" customClass="ContentCell" customModule="Disrupt_Sky_TV" customModuleProvider="target">
+                                        <rect key="frame" x="225" y="218" width="150" height="150"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Content Image Demo" translatesAutoresizingMaskIntoConstraints="NO" id="zuB-1Y-GxH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="zuB-1Y-GxH" firstAttribute="leading" secondItem="pfP-ir-0XC" secondAttribute="leading" id="7fX-96-l4L"/>
+                                            <constraint firstItem="zuB-1Y-GxH" firstAttribute="top" secondItem="pfP-ir-0XC" secondAttribute="top" id="I6L-dS-kwB"/>
+                                            <constraint firstAttribute="trailing" secondItem="zuB-1Y-GxH" secondAttribute="trailing" id="Ygc-D8-ufA"/>
+                                            <constraint firstAttribute="bottom" secondItem="zuB-1Y-GxH" secondAttribute="bottom" id="zs7-io-0bK"/>
+                                        </constraints>
+                                        <size key="customSize" width="150" height="150"/>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="nrh-kJ-3Ll" id="ahC-Tj-xpk"/>
-                                    <outlet property="delegate" destination="nrh-kJ-3Ll" id="gzo-xO-m6y"/>
+                                    <outlet property="dataSource" destination="nrh-kJ-3Ll" id="HIp-kX-sTW"/>
+                                    <outlet property="delegate" destination="nrh-kJ-3Ll" id="yVL-Jq-Q72"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Kko-Pa-QcC" firstAttribute="top" secondItem="XEw-xt-EsU" secondAttribute="bottom" id="G7e-3G-X2t"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Kko-Pa-QcC" secondAttribute="trailing" id="Qtd-aq-wHQ"/>
-                            <constraint firstItem="4Rq-iN-sqX" firstAttribute="top" secondItem="Kko-Pa-QcC" secondAttribute="bottom" id="aVO-VS-SD2"/>
-                            <constraint firstItem="Kko-Pa-QcC" firstAttribute="leading" secondItem="Oal-2c-fPC" secondAttribute="leadingMargin" id="nXg-aL-onY"/>
+                            <constraint firstItem="7AH-I3-OOj" firstAttribute="leading" secondItem="Oal-2c-fPC" secondAttribute="leading" id="2qD-eo-Tve"/>
+                            <constraint firstItem="4Rq-iN-sqX" firstAttribute="top" secondItem="7AH-I3-OOj" secondAttribute="bottom" id="NFi-yU-OB8"/>
+                            <constraint firstItem="7AH-I3-OOj" firstAttribute="top" secondItem="XEw-xt-EsU" secondAttribute="bottom" constant="-64" id="SSK-Fs-XQo"/>
+                            <constraint firstAttribute="trailing" secondItem="7AH-I3-OOj" secondAttribute="trailing" id="Y7A-gC-HBU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="eWJ-Ne-X1X"/>
+                    <navigationItem key="navigationItem" title="For You" id="eWJ-Ne-X1X"/>
                     <connections>
-                        <outlet property="collectionView" destination="Kko-Pa-QcC" id="tqQ-hO-iww"/>
+                        <outlet property="collectionView" destination="7AH-I3-OOj" id="Dsu-iy-lXY"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cy3-DN-u5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1082" y="-336"/>
         </scene>
@@ -115,4 +186,8 @@
             <point key="canvasLocation" x="270" y="-336"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Content Image Demo" width="133" height="75"/>
+        <image name="Resume Image Demo" width="133" height="75"/>
+    </resources>
 </document>

@@ -39,6 +39,8 @@ class ViewController: UIViewController {
         
         print(locationManager.location)
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

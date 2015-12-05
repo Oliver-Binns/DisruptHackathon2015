@@ -18,12 +18,12 @@ class Media: NSObject {
     }
     
     var title: String?
-    var duration: String?
+    var duration: Int?
     var genre: Genre?
     var subGenre: String?
     var channel: String?
     
-    init(title: String?, duration: String?, genre: Genre?, subGenre: String?, channel: String?) {
+    init(title: String?, duration: Int?, genre: Genre?, subGenre: String?, channel: String?) {
         self.title = title
         self.duration = duration
         self.genre = genre

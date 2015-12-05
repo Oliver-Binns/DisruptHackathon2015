@@ -19,6 +19,8 @@
 		6E8471541C133F0200099D29 /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8471531C133F0200099D29 /* TVShow.swift */; };
 		A70F2D381C134FEB0009EDF4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70F2D371C134FEB0009EDF4 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A70F2D3A1C1352850009EDF4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70F2D391C1352850009EDF4 /* DataManager.swift */; settings = {ASSET_TAGS = (); }; };
+		A76E94AA1C13753000D4E73B /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76E94A91C13753000D4E73B /* ResumeCell.swift */; settings = {ASSET_TAGS = (); }; };
+		A76E94AC1C13753700D4E73B /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76E94AB1C13753700D4E73B /* ContentCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		6E8471531C133F0200099D29 /* TVShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
 		A70F2D371C134FEB0009EDF4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A70F2D391C1352850009EDF4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		A76E94A91C13753000D4E73B /* ResumeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeCell.swift; sourceTree = "<group>"; };
+		A76E94AB1C13753700D4E73B /* ContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 				6E8471551C133F0F00099D29 /* Object Classes */,
 				6E21C31D1C13350300133981 /* Main.storyboard */,
 				A70F2D371C134FEB0009EDF4 /* HomeViewController.swift */,
+				A76E94AB1C13753700D4E73B /* ContentCell.swift */,
+				A76E94A91C13753000D4E73B /* ResumeCell.swift */,
 				6E21C3201C13350300133981 /* Assets.xcassets */,
 				6E21C3221C13350300133981 /* LaunchScreen.storyboard */,
 				6E21C3251C13350300133981 /* Info.plist */,
@@ -290,7 +296,9 @@
 				6E21C31C1C13350300133981 /* ViewController.swift in Sources */,
 				6E8471521C133EE600099D29 /* Film.swift in Sources */,
 				6E21C31A1C13350300133981 /* AppDelegate.swift in Sources */,
+				A76E94AC1C13753700D4E73B /* ContentCell.swift in Sources */,
 				A70F2D3A1C1352850009EDF4 /* DataManager.swift in Sources */,
+				A76E94AA1C13753000D4E73B /* ResumeCell.swift in Sources */,
 				6E8471541C133F0200099D29 /* TVShow.swift in Sources */,
 				6E8471501C133EC900099D29 /* Media.swift in Sources */,
 				A70F2D381C134FEB0009EDF4 /* HomeViewController.swift in Sources */,
@@ -436,6 +444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Disrupt Sky TV/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AndrewWalker.Disrupt-Sky-TV";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -448,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Disrupt Sky TV/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AndrewWalker.Disrupt-Sky-TV";
 				PRODUCT_NAME = "$(TARGET_NAME)";
