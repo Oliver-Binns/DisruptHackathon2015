@@ -12,15 +12,27 @@ class HomeViewController: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
     
+    let timeLabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let rightBarButtonItemOne: UIBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: "oneTapped:")
-        let rightBarButtonItemTwo: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: "twoTapped:")
-        let rightBarButtonItemThree: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: "threeTapped:")
+        let rightBarButtonItemOne: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Settings Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "oneTapped:")
+        rightBarButtonItemOne.tintColor = UIColor.whiteColor()
+        let rightBarButtonItemTwo: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Notification Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "twoTapped:")
+        rightBarButtonItemTwo.tintColor = UIColor.whiteColor()
+        let rightBarButtonItemThree: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Search Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "threeTapped:")
+        rightBarButtonItemThree.tintColor = UIColor.whiteColor()
         self.navigationItem.setRightBarButtonItems([rightBarButtonItemOne, rightBarButtonItemTwo, rightBarButtonItemThree], animated: true)
         
+        timeLabel.textAlignment = NSTextAlignment.Left
+        timeLabel.frame = CGRectMake(0, 0, view.frame.width, (self.navigationController?.navigationBar.frame.height)!)
+        timeLabel.textColor = UIColor.whiteColor()
+        
+        self.navigationItem.titleView = timeLabel
+        
+        updateTime()
         var _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateTime", userInfo: nil, repeats: true)
     }
     
@@ -31,6 +43,33 @@ class HomeViewController: UIViewController {
         let components = calendar.components(unit, fromDate: date)
         let hour = components.hour
         let minutes = components.minute
+        
+        var timeString: String!
+        if String(minutes).characters.count == 1 {
+            timeString = "\(hour):0\(minutes) | "
+        } else {
+            timeString = "\(hour):\(minutes) | "
+        }
+        
+        var timeOfDayString: String!
+        if hour >= 0 && hour < 12 {
+            timeOfDayString = "Morning"
+        } else if hour >= 12 && hour < 17 {
+            timeOfDayString = "Afternoon"
+        } else if hour >= 17 {
+            timeOfDayString = "Night"
+        }
+        
+        let attributedString = NSMutableAttributedString(string: timeString)
+        
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(17)]
+        let boldString = NSMutableAttributedString(string: timeOfDayString, attributes: attributes)
+        
+        attributedString.appendAttributedString(boldString)
+        
+        timeLabel.attributedText = attributedString
+        
+        self.navigationItem.titleView = timeLabel
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +109,7 @@ class HomeViewController: UIViewController {
         if indexPath.section == 0 {
             return CGSizeMake(resumeWidth, resumeWidth)
         } else {
-            return CGSizeMake(contentWidth, contentWidth)
+            return CGSizeMake(contentWidth - 5, contentWidth / 2)
         }
     }
     
