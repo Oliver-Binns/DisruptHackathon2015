@@ -11,22 +11,25 @@ import MapKit
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
-    var locationManager: CLLocationManager?;
+    var locationManager: CLLocationManager?
+    var media: [Media] = []
     @IBOutlet var collectionView: UICollectionView!
+    
+    let timeLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         //SETUP Device IDs
-        let defaults = NSUserDefaults.standardUserDefaults();
-        defaults.setValue("7bb60c9bf819183910b2473288388d834518ea2a", forKey: "subscriberId");
-        defaults.setValue("enihdiehqwtfw", forKey: "deviceId");
-        defaults.synchronize();
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setValue("7bb60c9bf819183910b2473288388d834518ea2a", forKey: "subscriberId")
+        defaults.setValue("enihdiehqwtfw", forKey: "deviceId")
+        defaults.synchronize()
         
         //SETUP Location
         self.locationManager = CLLocationManager.sharedManager
-        self.locationManager!.delegate = self;
+        self.locationManager!.delegate = self
         self.locationManager!.requestAlwaysAuthorization() //Displays alert view to request location use
         self.locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager!.startUpdatingLocation()
@@ -34,27 +37,41 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             self.locationManager!.requestWhenInUseAuthorization()
         }
         
-        let rightBarButtonItemOne: UIBarButtonItem = UIBarButtonItem(title: "Add", style: UIBarButtonItemStyle.Plain, target: self, action: "oneTapped:")
-        let rightBarButtonItemTwo: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: "twoTapped:")
-        let rightBarButtonItemThree: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: "threeTapped:")
+        let rightBarButtonItemOne: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Settings Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "oneTapped:")
+        rightBarButtonItemOne.tintColor = UIColor.whiteColor()
+        let rightBarButtonItemTwo: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Notification Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "twoTapped:")
+        rightBarButtonItemTwo.tintColor = UIColor.whiteColor()
+        let rightBarButtonItemThree: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Search Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "threeTapped:")
+        rightBarButtonItemThree.tintColor = UIColor.whiteColor()
+
         self.navigationItem.setRightBarButtonItems([rightBarButtonItemOne, rightBarButtonItemTwo, rightBarButtonItemThree], animated: true)
         
+        timeLabel.textAlignment = NSTextAlignment.Left
+        timeLabel.frame = CGRectMake(0, 0, view.frame.width, (self.navigationController?.navigationBar.frame.height)!)
+        timeLabel.textColor = UIColor.whiteColor()
+        
+        self.navigationItem.titleView = timeLabel
+        
+        updateTime()
         var _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateTime", userInfo: nil, repeats: true)
     }
     
     func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
-        DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: printData);
+        DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: updateCollectionView)
     }
+    
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         if(newLocation.distanceFromLocation(oldLocation) > 500){
-            DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: printData);
+            DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: updateCollectionView)
         }
     }
     
-    func printData(succeeded: Bool, request: [Media]){
-        for(var i = 0; i < request.count; i++){
-            print(request[i].title);
-        }
+    func updateCollectionView(succeeded: Bool, request: [Media]){
+        self.media = request
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.collectionView.reloadData()
+        })
     }
     
     func updateTime() {
@@ -64,6 +81,33 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         let components = calendar.components(unit, fromDate: date)
         let hour = components.hour
         let minutes = components.minute
+        
+        var timeString: String!
+        if String(minutes).characters.count == 1 {
+            timeString = "\(hour):0\(minutes) | "
+        } else {
+            timeString = "\(hour):\(minutes) | "
+        }
+        
+        var timeOfDayString: String!
+        if hour >= 0 && hour < 12 {
+            timeOfDayString = "Morning"
+        } else if hour >= 12 && hour < 17 {
+            timeOfDayString = "Afternoon"
+        } else if hour >= 17 {
+            timeOfDayString = "Night"
+        }
+        
+        let attributedString = NSMutableAttributedString(string: timeString)
+        
+        let attributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(18)]
+        let boldString = NSMutableAttributedString(string: timeOfDayString, attributes: attributes)
+        
+        attributedString.appendAttributedString(boldString)
+        
+        timeLabel.attributedText = attributedString
+        
+        self.navigationItem.titleView = timeLabel
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,18 +123,19 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         if section == 0 {
             return 1
         } else {
-            return 30 //Replace with recommendations.count
+            return self.media.count
         }
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        print(indexPath.section)
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("resumeCell", forIndexPath: indexPath) as! ResumeCell
             
             return cell
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("contentCell", forIndexPath: indexPath) as! ContentCell
+            
+            cell.showImageView.image = media[indexPath.row].image
             
             return cell
         }
@@ -101,9 +146,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         let contentWidth = floor(view.frame.width / 4)
         
         if indexPath.section == 0 {
-            return CGSizeMake(resumeWidth, resumeWidth)
+            return CGSizeMake(resumeWidth - 10, 140)
         } else {
-            return CGSizeMake(contentWidth, contentWidth)
+            return CGSizeMake(contentWidth - 5, contentWidth / 2)
         }
     }
     

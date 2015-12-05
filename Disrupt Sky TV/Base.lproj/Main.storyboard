@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H6J-VZ-sRi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H6J-VZ-sRi">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
-        <!--For You-->
+        <!--Home View Controller-->
         <scene sceneID="53X-cQ-VGs">
             <objects>
                 <viewController id="nrh-kJ-3Ll" customClass="HomeViewController" customModule="Disrupt_Sky_TV" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,41 +16,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7AH-I3-OOj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7AH-I3-OOj">
+                                <rect key="frame" x="0.0" y="35" width="600" height="565"/>
                                 <animations/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gcv-xJ-WnS">
-                                    <size key="itemSize" width="600" height="154"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="gcv-xJ-WnS">
+                                    <size key="itemSize" width="580" height="154"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="resumeCell" id="IhF-wf-esG" customClass="ResumeCell" customModule="Disrupt_Sky_TV" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="154"/>
+                                        <rect key="frame" x="10" y="69" width="580" height="154"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="580" height="154"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Resume Image Demo" translatesAutoresizingMaskIntoConstraints="NO" id="1G5-p1-RuI">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Resume Image Demo" translatesAutoresizingMaskIntoConstraints="NO" id="1G5-p1-RuI">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="154" id="cjQ-nW-LDn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZZ-I4-gpp">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZZ-I4-gpp">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
                                                     <animations/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resume 'Show Title'" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8I-wW-aok">
-                                                    <rect key="frame" x="0.0" y="98" width="600" height="48"/>
+                                                    <rect key="frame" x="0.0" y="8" width="580" height="138"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="48" id="T3S-dR-Vka"/>
+                                                        <constraint firstAttribute="height" constant="138" id="T3S-dR-Vka"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -65,7 +66,7 @@
                                             <constraint firstAttribute="trailing" secondItem="O8I-wW-aok" secondAttribute="trailing" id="GhC-Xl-MFz"/>
                                             <constraint firstItem="1G5-p1-RuI" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="Io6-9P-KYw"/>
                                             <constraint firstItem="SZZ-I4-gpp" firstAttribute="centerY" secondItem="1G5-p1-RuI" secondAttribute="centerY" id="PAJ-t2-Yse"/>
-                                            <constraint firstItem="O8I-wW-aok" firstAttribute="top" secondItem="IhF-wf-esG" secondAttribute="top" constant="98" id="Uyz-hk-Or7"/>
+                                            <constraint firstItem="O8I-wW-aok" firstAttribute="top" secondItem="IhF-wf-esG" secondAttribute="top" constant="8" id="Uyz-hk-Or7"/>
                                             <constraint firstItem="SZZ-I4-gpp" firstAttribute="centerX" secondItem="1G5-p1-RuI" secondAttribute="centerX" id="YLT-0h-LYk"/>
                                             <constraint firstAttribute="trailing" secondItem="1G5-p1-RuI" secondAttribute="trailing" id="ZzT-ii-aso"/>
                                             <constraint firstItem="O8I-wW-aok" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="egn-9c-jmr"/>
@@ -74,7 +75,7 @@
                                         </constraints>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contentCell" id="pfP-ir-0XC" customClass="ContentCell" customModule="Disrupt_Sky_TV" customModuleProvider="target">
-                                        <rect key="frame" x="225" y="218" width="150" height="150"/>
+                                        <rect key="frame" x="225" y="228" width="150" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -96,6 +97,9 @@
                                             <constraint firstAttribute="bottom" secondItem="zuB-1Y-GxH" secondAttribute="bottom" id="zs7-io-0bK"/>
                                         </constraints>
                                         <size key="customSize" width="150" height="150"/>
+                                        <connections>
+                                            <outlet property="showImageView" destination="zuB-1Y-GxH" id="YsP-P6-TfU"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -109,11 +113,11 @@
                         <constraints>
                             <constraint firstItem="7AH-I3-OOj" firstAttribute="leading" secondItem="Oal-2c-fPC" secondAttribute="leading" id="2qD-eo-Tve"/>
                             <constraint firstItem="4Rq-iN-sqX" firstAttribute="top" secondItem="7AH-I3-OOj" secondAttribute="bottom" id="NFi-yU-OB8"/>
-                            <constraint firstItem="7AH-I3-OOj" firstAttribute="top" secondItem="XEw-xt-EsU" secondAttribute="bottom" constant="-64" id="SSK-Fs-XQo"/>
+                            <constraint firstItem="7AH-I3-OOj" firstAttribute="top" secondItem="XEw-xt-EsU" secondAttribute="bottom" constant="-29" id="SSK-Fs-XQo"/>
                             <constraint firstAttribute="trailing" secondItem="7AH-I3-OOj" secondAttribute="trailing" id="Y7A-gC-HBU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="For You" id="eWJ-Ne-X1X"/>
+                    <navigationItem key="navigationItem" id="LFT-8f-5Ig"/>
                     <connections>
                         <outlet property="collectionView" destination="7AH-I3-OOj" id="Dsu-iy-lXY"/>
                     </connections>
