@@ -21,7 +21,7 @@ class DataManager: NSObject {
         let defaults = NSUserDefaults.standardUserDefaults();
         let subscriberId = defaults.objectForKey("subscriberId") as! String;
         let deviceId = defaults.objectForKey("deviceId") as! String;
-        let locationString = String(format: "%d;%d", location.latitude, location.longitude);
+        let locationString = String(format: "%f;%f", location.latitude, location.longitude);
         
         let params = ["location":locationString, "deviceId":deviceId, "subscriberId":subscriberId] as Dictionary<String, String>
         
