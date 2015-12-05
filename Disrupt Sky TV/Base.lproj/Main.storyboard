@@ -1,10 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="53X-cQ-VGs">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cy3-DN-u5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="nrh-kJ-3Ll" customClass="HomeViewController" customModule="Disrupt_Sky_TV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XEw-xt-EsU"/>
+                        <viewControllerLayoutGuide type="bottom" id="4Rq-iN-sqX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oal-2c-fPC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kko-Pa-QcC">
+                                <rect key="frame" x="20" y="64" width="560" height="536"/>
+                                <animations/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oth-wG-It5">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nrh-kJ-3Ll" id="ahC-Tj-xpk"/>
+                                    <outlet property="delegate" destination="nrh-kJ-3Ll" id="gzo-xO-m6y"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kko-Pa-QcC" firstAttribute="top" secondItem="XEw-xt-EsU" secondAttribute="bottom" id="G7e-3G-X2t"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kko-Pa-QcC" secondAttribute="trailing" id="Qtd-aq-wHQ"/>
+                            <constraint firstItem="4Rq-iN-sqX" firstAttribute="top" secondItem="Kko-Pa-QcC" secondAttribute="bottom" id="aVO-VS-SD2"/>
+                            <constraint firstItem="Kko-Pa-QcC" firstAttribute="leading" secondItem="Oal-2c-fPC" secondAttribute="leadingMargin" id="nXg-aL-onY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eWJ-Ne-X1X"/>
+                    <connections>
+                        <outlet property="collectionView" destination="Kko-Pa-QcC" id="tqQ-hO-iww"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1082" y="-336"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -48,6 +94,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bov-4Q-plr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H6J-VZ-sRi" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1kS-8n-Vr7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nrh-kJ-3Ll" kind="relationship" relationship="rootViewController" id="JuU-CX-ne2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuu-Ai-gg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="270" y="-336"/>
         </scene>
     </scenes>
 </document>
