@@ -77,7 +77,9 @@ class DataManager: NSObject {
         for(var i = 0; i < jsonArray.count; i++){
             let mediaDict: NSDictionary = jsonArray[i];
             //mediaDict[i]["genre"]
-            let media: Media = Media(title: mediaDict["name"] as? String, duration: 0, genre: Media.Genre.Kids, subGenre: "", channel: "");
+            let programmeId = mediaDict["programmeId"] as! String;
+            let url = NSURL(string: "http://localhost:8080/images/" + programmeId + ".jpeg");
+            let media: Media = Media(title: mediaDict["name"] as? String, duration: 0, genre: Media.Genre.Kids, subGenre: "", channel: "", image: url);
             mediaArray.append(media);
         }
         
