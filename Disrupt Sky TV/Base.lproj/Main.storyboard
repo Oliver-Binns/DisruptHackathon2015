@@ -61,6 +61,25 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Where you left off..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uom-nB-6HD">
+                                                    <rect key="frame" x="8" y="102" width="564" height="22"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="138" id="TIa-SK-08B"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="564" id="gBv-xg-Zxu"/>
+                                                        <constraint firstAttribute="height" constant="21" id="psV-hk-T7G"/>
+                                                        <constraint firstAttribute="width" constant="564" id="sC2-Ka-8MA"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="vK2-5W-Oid"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="TIa-SK-08B"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -72,6 +91,8 @@
                                             <constraint firstAttribute="trailing" secondItem="O8I-wW-aok" secondAttribute="trailing" id="GhC-Xl-MFz"/>
                                             <constraint firstItem="O8I-wW-aok" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" constant="8" id="HlG-9b-yFJ"/>
                                             <constraint firstItem="1G5-p1-RuI" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="Io6-9P-KYw"/>
+                                            <constraint firstItem="Uom-nB-6HD" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" constant="8" id="QSP-hU-Wr3"/>
+                                            <constraint firstItem="O8I-wW-aok" firstAttribute="top" secondItem="Uom-nB-6HD" secondAttribute="bottom" constant="1" id="Tzg-oN-TLj"/>
                                             <constraint firstItem="O8I-wW-aok" firstAttribute="top" secondItem="IhF-wf-esG" secondAttribute="top" constant="8" id="Uyz-hk-Or7"/>
                                             <constraint firstAttribute="trailing" secondItem="1G5-p1-RuI" secondAttribute="trailing" constant="-20" id="ZzT-ii-aso"/>
                                             <constraint firstItem="O8I-wW-aok" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="egn-9c-jmr"/>
