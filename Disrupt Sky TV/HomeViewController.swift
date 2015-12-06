@@ -98,7 +98,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             self.collectionView.reloadData()
             self.collectionView.layoutIfNeeded();
         });
-        
+    }
+    
+    override func viewDidLayoutSubviews() {
         dispatch_async(dispatch_get_main_queue(), {
             var i = 0;
             for (keys, media) in self.media{
@@ -111,20 +113,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
                 i++;
             }
         });
-        /*self.collectionView.performBatchUpdates({}, completion: {
-            (Bool)->Void in
-            var i = 0;
-            for (keys, media) in self.media{
-                let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 1)) as? ContentCell;
-            
-                if(cell != nil){
-                    cell!.updateMedia(keys, media: media)
-                    cell!.collectionView.reloadData();
-                }
-                i++;
-            }
-            return;
-        });*/
     }
     
     
@@ -162,6 +150,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         
         timeLabel.attributedText = attributedString
         
+        //DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: updateCollectionView)
         self.navigationItem.titleView = navView
     }
 
@@ -202,9 +191,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         //let contentWidth = floor(view.frame.width / 4)
         
         if indexPath.section == 0 {
-            return CGSizeMake(resumeWidth - 10, 120)
+            return CGSizeMake(resumeWidth - 10, 100)
         } else {
-            return CGSizeMake(resumeWidth - 10, 80)
+            return CGSizeMake(resumeWidth - 10, 120)
         }
     }
     
