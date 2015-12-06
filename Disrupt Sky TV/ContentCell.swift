@@ -48,13 +48,13 @@ class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        _ = floor(self.frame.width)
-        //let contentWidth = floor(view.frame.width / 4)
+        let contentHeight = self.frame.height;
+        let contentWidth = (self.frame.height / 9.0) * 16;
         
         if indexPath.section == 0 {
-            return CGSizeMake(249 - 10, 140)
+            return CGSizeMake(contentWidth, contentHeight)
         } else {
-            return CGSizeMake(249 - 10, 140)
+            return CGSizeMake(contentWidth, contentHeight)
         }
     }
 }
