@@ -136,9 +136,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             return 1
-        } else {
-            return self.media.count
         }
+        var emotionCount: Int { return Emotion.Emotion.Cheeky.hashValue + 1}
+        return emotionCount
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -149,8 +149,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("contentCell", forIndexPath: indexPath) as! ContentCell
             
-            cell.showImageView.image = media[indexPath.row].image
-            cell.showTitleLabel.text = media[indexPath.row].title
+            //cell.showImageView.image = media[indexPath.row].image
+            //cell.showTitleLabel.text = media[indexPath.row].title
             
             return cell
         }
@@ -158,12 +158,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let resumeWidth = floor(view.frame.width)
-        let contentWidth = floor(view.frame.width / 4)
+        //let contentWidth = floor(view.frame.width / 4)
         
         if indexPath.section == 0 {
             return CGSizeMake(resumeWidth - 10, 140)
         } else {
-            return CGSizeMake(contentWidth - 5, contentWidth / 2)
+            return CGSizeMake(resumeWidth - 10, 140)
         }
     }
     
