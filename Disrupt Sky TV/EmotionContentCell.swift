@@ -10,4 +10,5 @@ import UIKit
 
 class EmotionContentCell: UICollectionViewCell {
     @IBOutlet var showImage: UIImageView!
+    @IBOutlet weak var showTitle: UILabel!
 }

@@ -14,6 +14,7 @@ class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     @IBOutlet weak var showCounterLabel: UILabel!
     @IBOutlet var emotionImage: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
+    
     private var emotion: Emotion!
     private var media: [Media] = [];
     
@@ -37,7 +38,8 @@ class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("emotionContentCell", forIndexPath: indexPath) as! EmotionContentCell
-        cell.showImage.image = media[indexPath.row].image;
+        cell.showImage.image = media[indexPath.row].image
+        cell.showTitle.text = media[indexPath.row].title
         return cell;
     }
     
