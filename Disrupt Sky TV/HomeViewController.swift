@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var collectionView: UICollectionView!
     
     let timeLabel = UILabel()
+    let navView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,11 +53,21 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
         self.navigationItem.setRightBarButtonItems([rightBarButtonItemOne, rightBarButtonItemTwo, rightBarButtonItemThree], animated: true)
         
-        timeLabel.textAlignment = NSTextAlignment.Left
-        timeLabel.frame = CGRectMake(0, 0, view.frame.width, (self.navigationController?.navigationBar.frame.height)!)
+        navView.frame = CGRectMake(0, 0, view.frame.width, (self.navigationController?.navigationBar.frame.height)!)
+        
+        timeLabel.textAlignment = NSTextAlignment.Center
+        timeLabel.frame = CGRectMake(view.frame.width / 3, 0, view.frame.width / 3, (self.navigationController?.navigationBar.frame.height)!)
         timeLabel.textColor = UIColor.whiteColor()
         
-        self.navigationItem.titleView = timeLabel
+        let logoImage = UIImageView()
+        logoImage.frame = CGRectMake(0, 5, 64.4, (self.navigationController?.navigationBar.frame.height)! - 10)
+        logoImage.image = UIImage(named: "Nav Logo")
+        logoImage.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        navView.addSubview(timeLabel)
+        navView.addSubview(logoImage)
+        
+        self.navigationItem.titleView = navView
         
         updateTime()
         var _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateTime", userInfo: nil, repeats: true)
@@ -139,8 +150,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         
         timeLabel.attributedText = attributedString
         
-        self.navigationItem.titleView = timeLabel
         //DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: updateCollectionView)
+        self.navigationItem.titleView = navView
     }
 
     override func didReceiveMemoryWarning() {
@@ -180,9 +191,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         //let contentWidth = floor(view.frame.width / 4)
         
         if indexPath.section == 0 {
-            return CGSizeMake(resumeWidth - 10, 140)
+            return CGSizeMake(resumeWidth - 10, 120)
         } else {
-            return CGSizeMake(resumeWidth - 10, 100)
+            return CGSizeMake(resumeWidth - 10, 80)
         }
     }
     
