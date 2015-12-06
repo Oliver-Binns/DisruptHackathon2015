@@ -42,7 +42,7 @@
                                                         <constraint firstAttribute="height" constant="154" id="cjQ-nW-LDn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resume 'Show Title'" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8I-wW-aok">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resume 'Shaun The Sheep'" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8I-wW-aok">
                                                     <rect key="frame" x="0.0" y="8" width="580" height="138"/>
                                                     <animations/>
                                                     <constraints>
@@ -52,13 +52,6 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZZ-I4-gpp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
-                                                    <animations/>
-                                                    <connections>
-                                                        <segue destination="BoF-uz-SWU" kind="presentation" id="9Zi-To-HHm"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -69,13 +62,9 @@
                                             <constraint firstItem="1G5-p1-RuI" firstAttribute="top" secondItem="IhF-wf-esG" secondAttribute="top" id="G85-AI-JjY"/>
                                             <constraint firstAttribute="trailing" secondItem="O8I-wW-aok" secondAttribute="trailing" id="GhC-Xl-MFz"/>
                                             <constraint firstItem="1G5-p1-RuI" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="Io6-9P-KYw"/>
-                                            <constraint firstItem="SZZ-I4-gpp" firstAttribute="centerY" secondItem="1G5-p1-RuI" secondAttribute="centerY" id="PAJ-t2-Yse"/>
                                             <constraint firstItem="O8I-wW-aok" firstAttribute="top" secondItem="IhF-wf-esG" secondAttribute="top" constant="8" id="Uyz-hk-Or7"/>
-                                            <constraint firstItem="SZZ-I4-gpp" firstAttribute="centerX" secondItem="1G5-p1-RuI" secondAttribute="centerX" id="YLT-0h-LYk"/>
                                             <constraint firstAttribute="trailing" secondItem="1G5-p1-RuI" secondAttribute="trailing" id="ZzT-ii-aso"/>
                                             <constraint firstItem="O8I-wW-aok" firstAttribute="leading" secondItem="IhF-wf-esG" secondAttribute="leading" id="egn-9c-jmr"/>
-                                            <constraint firstItem="SZZ-I4-gpp" firstAttribute="top" secondItem="1G5-p1-RuI" secondAttribute="bottom" constant="-154" id="lJl-FM-Akn"/>
-                                            <constraint firstItem="SZZ-I4-gpp" firstAttribute="leading" secondItem="1G5-p1-RuI" secondAttribute="trailing" constant="-600" id="sAN-Uv-3Yl"/>
                                         </constraints>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="contentCell" id="pfP-ir-0XC" customClass="ContentCell" customModule="Disrupt_Sky_TV" customModuleProvider="target">
@@ -152,6 +141,7 @@
                     <navigationItem key="navigationItem" id="LFT-8f-5Ig"/>
                     <connections>
                         <outlet property="collectionView" destination="7AH-I3-OOj" id="Dsu-iy-lXY"/>
+                        <segue destination="hI8-3o-e92" kind="presentation" identifier="showRateView" id="aje-lw-36I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cy3-DN-u5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,23 +149,23 @@
             <point key="canvasLocation" x="1082" y="-336"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="4g4-Ic-9HC">
+        <scene sceneID="dcp-ay-sBg">
             <objects>
-                <viewController id="BoF-uz-SWU" sceneMemberID="viewController">
+                <viewController id="hI8-3o-e92" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OhG-hO-H0S"/>
-                        <viewControllerLayoutGuide type="bottom" id="mak-1y-vZL"/>
+                        <viewControllerLayoutGuide type="top" id="ezi-hG-GwF"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kao-76-YWm"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zYS-Wf-iHm">
+                    <view key="view" contentMode="scaleToFill" id="r9a-S2-h9s">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Zq-Jn-sAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5t1-jd-g09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="-336"/>
+            <point key="canvasLocation" x="1785" y="-336"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
