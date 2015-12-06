@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -75,8 +76,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="580" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WB8-Xg-TO5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="580" height="150"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WB8-Xg-TO5">
+                                                    <rect key="frame" x="158" y="0.0" width="422" height="150"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="pGA-Op-hAA">
@@ -86,35 +87,8 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emotionCell" id="z6H-sK-HPs" customClass="EmotionCell" customModule="Disrupt_Sky_TV" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="25" width="150" height="100"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rLw-yJ-xgM">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
-                                                                        <animations/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                                <animations/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            </view>
-                                                            <animations/>
-                                                            <constraints>
-                                                                <constraint firstItem="rLw-yJ-xgM" firstAttribute="centerY" secondItem="z6H-sK-HPs" secondAttribute="centerY" id="7fk-lU-cnS"/>
-                                                                <constraint firstItem="rLw-yJ-xgM" firstAttribute="width" secondItem="z6H-sK-HPs" secondAttribute="width" id="oK7-fe-uxS"/>
-                                                                <constraint firstItem="rLw-yJ-xgM" firstAttribute="height" secondItem="z6H-sK-HPs" secondAttribute="height" id="rVk-I1-5hI"/>
-                                                                <constraint firstItem="rLw-yJ-xgM" firstAttribute="centerX" secondItem="z6H-sK-HPs" secondAttribute="centerX" id="zre-EC-uBx"/>
-                                                            </constraints>
-                                                            <size key="customSize" width="150" height="100"/>
-                                                            <connections>
-                                                                <outlet property="emotionImage" destination="rLw-yJ-xgM" id="Dp6-zS-u9t"/>
-                                                            </connections>
-                                                        </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emotionContentCell" id="pN4-M8-Lx2" customClass="EmotionContentCell" customModule="Disrupt_Sky_TV" customModuleProvider="target">
-                                                            <rect key="frame" x="155" y="25" width="150" height="100"/>
+                                                            <rect key="frame" x="0.0" y="25" width="150" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
@@ -143,6 +117,14 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7nc-2y-c4A">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="7nc-2y-c4A" secondAttribute="height" multiplier="1:1" id="3RB-pv-GKl"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -154,25 +136,37 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="WB8-Xg-TO5" secondAttribute="trailing" id="AZA-XK-Crb"/>
                                             <constraint firstItem="WB8-Xg-TO5" firstAttribute="width" secondItem="pfP-ir-0XC" secondAttribute="width" id="Cxw-xk-jO2"/>
                                             <constraint firstAttribute="bottom" secondItem="WB8-Xg-TO5" secondAttribute="bottom" id="E7v-kP-Dqi"/>
+                                            <constraint firstAttribute="trailing" secondItem="WB8-Xg-TO5" secondAttribute="trailing" id="KOK-Yb-keF"/>
+                                            <constraint firstItem="7nc-2y-c4A" firstAttribute="leading" secondItem="pfP-ir-0XC" secondAttribute="leadingMargin" id="QW3-TK-Wgi"/>
+                                            <constraint firstItem="7nc-2y-c4A" firstAttribute="centerY" secondItem="pfP-ir-0XC" secondAttribute="centerY" id="R4G-NM-TPj"/>
                                             <constraint firstItem="WB8-Xg-TO5" firstAttribute="height" secondItem="pfP-ir-0XC" secondAttribute="height" id="SHL-hK-dml"/>
+                                            <constraint firstItem="7nc-2y-c4A" firstAttribute="height" secondItem="pfP-ir-0XC" secondAttribute="height" id="VMK-gx-JSl"/>
                                             <constraint firstItem="WB8-Xg-TO5" firstAttribute="top" secondItem="pfP-ir-0XC" secondAttribute="topMargin" id="Zrq-DC-ysM"/>
                                             <constraint firstAttribute="trailing" secondItem="WB8-Xg-TO5" secondAttribute="trailing" id="aGZ-pM-Xjy"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="WB8-Xg-TO5" secondAttribute="trailing" constant="-8" id="fhJ-3C-5Lv"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="WB8-Xg-TO5" secondAttribute="bottom" id="gX1-Td-rr1"/>
+                                            <constraint firstItem="7nc-2y-c4A" firstAttribute="leading" secondItem="pfP-ir-0XC" secondAttribute="leading" id="jfd-70-9me"/>
                                             <constraint firstItem="WB8-Xg-TO5" firstAttribute="centerX" secondItem="pfP-ir-0XC" secondAttribute="centerX" id="rUs-GP-Jhe"/>
+                                            <constraint firstItem="WB8-Xg-TO5" firstAttribute="leading" secondItem="7nc-2y-c4A" secondAttribute="trailing" id="yJY-90-oqR"/>
                                         </constraints>
                                         <size key="customSize" width="580" height="150"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="9A7-xI-XUM"/>
                                                 <exclude reference="AZA-XK-Crb"/>
+                                                <exclude reference="Cxw-xk-jO2"/>
                                                 <exclude reference="E7v-kP-Dqi"/>
                                                 <exclude reference="Zrq-DC-ysM"/>
                                                 <exclude reference="aGZ-pM-Xjy"/>
+                                                <exclude reference="fhJ-3C-5Lv"/>
                                                 <exclude reference="gX1-Td-rr1"/>
+                                                <exclude reference="rUs-GP-Jhe"/>
+                                                <exclude reference="yJY-90-oqR"/>
                                             </mask>
                                         </variation>
                                         <connections>
                                             <outlet property="collectionView" destination="WB8-Xg-TO5" id="LPH-Hi-gnC"/>
+                                            <outlet property="emotionImage" destination="7nc-2y-c4A" id="KjR-uS-luB"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

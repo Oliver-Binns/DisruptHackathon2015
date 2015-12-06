@@ -9,21 +9,25 @@
 import UIKit
 
 class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    
+    @IBOutlet var emotionImage: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     private var emotion: Emotion!
     private var media: [Media] = [];
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(section == 1){
-            return 1;
-        }
         return media.count;
     }
     
     func updateMedia(emotion: Emotion, media: [Media]){
         self.emotion = emotion;
+        self.emotionImage.image = emotion.image;
         self.media = media;
-        self.collectionView.reloadData();
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.collectionView.reloadData();
+        });
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -31,16 +35,9 @@ class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if(indexPath.row == 0){
-            //Show Our Emotions
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("emotionCell", forIndexPath: indexPath) as! EmotionCell
-            cell.emotionImage.image = self.emotion.image;
-            return cell;
-        }else{
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("emotionContentCell", forIndexPath: indexPath) as! EmotionContentCell
-            cell.showImage.image = media[indexPath.row].image;
-            return cell;
-        }
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("emotionContentCell", forIndexPath: indexPath) as! EmotionContentCell
+        cell.showImage.image = media[indexPath.row].image;
+        return cell;
     }
     
     override func awakeFromNib() {

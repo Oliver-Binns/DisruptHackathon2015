@@ -86,17 +86,23 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         dispatch_async(dispatch_get_main_queue(), {
             self.collectionView.reloadData()
             self.collectionView.layoutIfNeeded();
-            
+        });
+        
+        dispatch_async(dispatch_get_main_queue(), {
             var i = 0;
             for (keys, media) in self.media{
-                print(keys);
-                let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 1)) as! ContentCell;
-                cell.updateMedia(keys, media: media)
-                cell.collectionView.reloadData();
-                //i++;
+                let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 1)) as? ContentCell;
+                
+                if(cell != nil){
+                    cell!.updateMedia(keys, media: media)
+                    cell!.collectionView.reloadData();
+                }
+                i++;
             }
-        })
+        });
     }
+    
+    
     
     func updateTime() {
         let date = NSDate()
