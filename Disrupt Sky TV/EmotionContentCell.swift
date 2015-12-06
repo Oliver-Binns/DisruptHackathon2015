@@ -9,5 +9,5 @@
 import UIKit
 
 class EmotionContentCell: UICollectionViewCell {
-    
+    @IBOutlet var showImage: UIImageView!
 }

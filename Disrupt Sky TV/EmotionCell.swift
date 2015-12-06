@@ -10,4 +10,7 @@ import UIKit
 
 class EmotionCell: UICollectionViewCell {
     
+    @IBOutlet var emotionImage: UIImageView!
+    @IBOutlet var textLabel: UILabel!
+    
 }

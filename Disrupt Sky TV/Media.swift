@@ -31,6 +31,13 @@ class Media: NSObject {
         self.genre = genre
         self.subGenre = subGenre
         self.channel = channel
-        self.image = UIImage(data: NSData(contentsOfURL: image!)!)
+        if(image != nil){
+            let data = NSData(contentsOfURL: image!);
+            if(data != nil){
+                self.image = UIImage(data: data!)
+            }else{
+                print("No image found for.. " + title!);
+            }
+        }
     }
 }

@@ -102,7 +102,6 @@ class DataManager: NSObject {
             default:
                 emotionKey = Emotion.KeepVibe;
             }
-            
             emotionsArray[emotionKey] = mediaArray;
         }
         

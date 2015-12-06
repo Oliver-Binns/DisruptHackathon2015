@@ -14,7 +14,7 @@ import AVFoundation
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     var locationManager: CLLocationManager?
-    var media: [Media] = []
+    var media = Dictionary<Emotion, [Media]>();
     var moviePlayerVC = AVPlayerViewController();
     var videoPlaying = false;
     private var firstAppear = true
@@ -80,11 +80,21 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func updateCollectionView(succeeded: Bool, request: [Media]){
+    func updateCollectionView(succeeded: Bool, request: Dictionary<Emotion, [Media]>){
         self.media = request
         
         dispatch_async(dispatch_get_main_queue(), {
             self.collectionView.reloadData()
+            self.collectionView.layoutIfNeeded();
+            
+            var i = 0;
+            for (keys, media) in self.media{
+                print(keys);
+                let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 1)) as! ContentCell;
+                cell.updateMedia(keys, media: media)
+                cell.collectionView.reloadData();
+                //i++;
+            }
         })
     }
     
@@ -137,8 +147,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         if section == 0 {
             return 1
         }
-        var emotionCount: Int { return Emotion.Emotion.Cheeky.hashValue + 1}
-        return emotionCount
+        //var emotionCount: Int { return Emotion.Emotion.Cheeky.hashValue + 1}
+        return self.media.keys.count;
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
