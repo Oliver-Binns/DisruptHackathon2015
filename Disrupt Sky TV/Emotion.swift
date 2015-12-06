@@ -8,47 +8,45 @@
 
 import UIKit
 
-class Emotion: NSObject {
-    enum Emotion {
-        case Happy
-        case KeepVibe
-        case Sad
-        case Anger
-        case Love
-        case Cheeky
-    }
+enum Emotion {
+    case Happy
+    case KeepVibe
+    case Sad
+    case Anger
+    case Love
+    case Cheeky
     
-    func getIcon(emotion: Emotion) -> UIImage {
-        switch emotion {
-        case .Happy:
-            return UIImage(named: "Happy")!
-        case .KeepVibe:
-            return UIImage(named: "KeepVibe")!
-        case .Sad:
-            return UIImage(named: "Sad")!
-        case .Anger:
-            return UIImage(named: "Anger")!
-        case .Love:
-            return UIImage(named: "Love")!
-        case .Cheeky:
-            return UIImage(named: "Cheeky")!
+    var description: String{
+        switch self{
+        case Happy:
+            return "Cheer Me Up"
+        case KeepVibe:
+            return "More Like This"
+        case Sad:
+            return "Make Me Cry"
+        case Anger:
+            return "Let Me Vent"
+        case Love:
+            return "Let's Get It On"
+        case Cheeky:
+            return "Give Me Nandos"
         }
     }
     
-    func getDescription(emotion: Emotion) -> String {
-        switch emotion {
-        case .Happy:
-            return "Cheer Me Up"
-        case .KeepVibe:
-            return "More Like This!"
-        case .Sad:
-            return "Make Me Cry"
-        case .Anger:
-            return "Let Me Vent"
-        case .Love:
-            return "Lets Get It On"
-        case .Cheeky:
-            return "Give Me Nandos"
+    var image: UIImage{
+        switch self{
+        case Happy:
+            return UIImage(named: "Happy")!
+        case KeepVibe:
+            return UIImage(named: "KeepVibe")!
+        case Sad:
+            return UIImage(named: "Sad")!
+        case Anger:
+            return UIImage(named: "Anger")!
+        case Love:
+            return UIImage(named: "Love")!
+        case Cheeky:
+            return UIImage(named: "Cheeky")!
         }
     }
 }
