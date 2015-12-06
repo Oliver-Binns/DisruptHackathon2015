@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7AH-I3-OOj">
-                                <rect key="frame" x="0.0" y="37" width="600" height="563"/>
+                                <rect key="frame" x="0.0" y="27" width="600" height="573"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="gcv-xJ-WnS">
@@ -139,6 +139,27 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="249" height="150"/>
                                                                         <animations/>
                                                                     </imageView>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwM-jV-lDs">
+                                                                        <rect key="frame" x="0.0" y="110" width="249" height="40"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axn-9R-5Cs">
+                                                                                <rect key="frame" x="8" y="8" width="233" height="24"/>
+                                                                                <animations/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <animations/>
+                                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="40" id="3J5-Yh-SKx"/>
+                                                                            <constraint firstItem="axn-9R-5Cs" firstAttribute="leading" secondItem="nwM-jV-lDs" secondAttribute="leading" constant="8" id="NcO-tE-Ckt"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="axn-9R-5Cs" secondAttribute="bottom" constant="8" id="yEa-r1-dfu"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="axn-9R-5Cs" secondAttribute="trailing" constant="8" id="yoV-wM-DKt"/>
+                                                                            <constraint firstItem="axn-9R-5Cs" firstAttribute="top" secondItem="nwM-jV-lDs" secondAttribute="top" constant="8" id="yzY-vL-eFn"/>
+                                                                        </constraints>
+                                                                    </view>
                                                                 </subviews>
                                                                 <animations/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -147,13 +168,17 @@
                                                             <color key="backgroundColor" white="0.2470561594" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="xKN-zB-Uop" firstAttribute="width" secondItem="pN4-M8-Lx2" secondAttribute="width" id="60m-en-jOv"/>
+                                                                <constraint firstItem="nwM-jV-lDs" firstAttribute="leading" secondItem="pN4-M8-Lx2" secondAttribute="leading" id="Exx-xe-h5z"/>
                                                                 <constraint firstItem="xKN-zB-Uop" firstAttribute="centerX" secondItem="pN4-M8-Lx2" secondAttribute="centerX" id="TRt-Ua-N22"/>
                                                                 <constraint firstItem="xKN-zB-Uop" firstAttribute="centerY" secondItem="pN4-M8-Lx2" secondAttribute="centerY" id="cL6-20-War"/>
+                                                                <constraint firstAttribute="trailing" secondItem="nwM-jV-lDs" secondAttribute="trailing" id="iSD-UR-baL"/>
                                                                 <constraint firstItem="xKN-zB-Uop" firstAttribute="height" secondItem="pN4-M8-Lx2" secondAttribute="height" id="wua-fZ-gTX"/>
+                                                                <constraint firstAttribute="bottom" secondItem="nwM-jV-lDs" secondAttribute="bottom" id="xym-LP-mrz"/>
                                                             </constraints>
                                                             <size key="customSize" width="249" height="150"/>
                                                             <connections>
                                                                 <outlet property="showImage" destination="xKN-zB-Uop" id="kKA-fE-QmN"/>
+                                                                <outlet property="showTitle" destination="axn-9R-5Cs" id="stB-Wp-LMn"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -274,7 +299,7 @@
                         <constraints>
                             <constraint firstItem="7AH-I3-OOj" firstAttribute="leading" secondItem="Oal-2c-fPC" secondAttribute="leading" id="2qD-eo-Tve"/>
                             <constraint firstItem="4Rq-iN-sqX" firstAttribute="top" secondItem="7AH-I3-OOj" secondAttribute="bottom" id="NFi-yU-OB8"/>
-                            <constraint firstItem="7AH-I3-OOj" firstAttribute="top" secondItem="XEw-xt-EsU" secondAttribute="bottom" constant="-27" id="SSK-Fs-XQo"/>
+                            <constraint firstItem="7AH-I3-OOj" firstAttribute="top" secondItem="XEw-xt-EsU" secondAttribute="bottom" constant="-37" id="SSK-Fs-XQo"/>
                             <constraint firstAttribute="trailing" secondItem="7AH-I3-OOj" secondAttribute="trailing" id="Y7A-gC-HBU"/>
                         </constraints>
                     </view>
