@@ -80,8 +80,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func oneTapped(){
-        self.time = self.time.dateByAddingTimeInterval(7200);
-        print(self.time);
+        self.time = self.time.dateByAddingTimeInterval(28800);
         updateTime();
         DataManager.sharedInstance.apiRequest(CLLocationCoordinate2D(), time: self.time, callback: updateCollectionView)
     }
@@ -191,24 +190,20 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             test.addAction(cancelAction)
             self.presentViewController(test, animated: true, completion: nil);
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
+        
         dispatch_async(dispatch_get_main_queue(), {
             var i = 0;
-            for (keys, media) in self.media{
+            for media in self.media{
                 let cell = self.collectionView.cellForItemAtIndexPath(NSIndexPath(forItem: i, inSection: 1)) as? ContentCell;
                 
                 if(cell != nil){
-                    cell!.updateMedia(keys, media: media)
+                    cell!.updateMedia(media.0, media: media.1)
                     cell!.collectionView.reloadData();
                 }
                 i++;
             }
         });
     }
-    
-    
     
     func updateTime() {
         let calendar = NSCalendar.currentCalendar()

@@ -26,7 +26,7 @@ class Media: NSObject {
     var image: UIImage?
     
     init(title: String?, duration: Int?, genre: Genre?, subGenre: String?, channel: String?, image: NSURL?) {
-        //print(title);
+        print(title);
         self.title = title
         self.duration = duration
         self.genre = genre

@@ -30,7 +30,7 @@ class DataManager: NSObject {
         let timeString = dateFormatter.stringFromDate(time);
         
         let params = ["time": timeString, "location":locationString, "deviceId":deviceId, "subscriberId":subscriberId] as Dictionary<String, String>
-        
+        print(params);
         post(params, url: self.baseUrl + "api/", postCompleted: callback)
     }
     
@@ -66,7 +66,7 @@ class DataManager: NSObject {
                 else {
                     // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
                     let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                    //print("Error could not parse JSON: \(jsonStr)")
+                    print("Error could not parse JSON: \(jsonStr)")
                 }
             })
             task.resume()
@@ -83,9 +83,8 @@ class DataManager: NSObject {
         for(var j = 0; j < emotions.count; j++){
             let jsonArray = json[emotions[j]] as! [NSDictionary];
             var mediaArray: [Media] = [];
-            print(jsonArray.count);
             for(var i = 0; i < jsonArray.count; i++){
-                let mediaDict: NSDictionary = jsonArray[i];
+                var mediaDict: NSDictionary = jsonArray[i];
                 //mediaDict[i]["genre"]
                 let programmeId = mediaDict["programmeId"] as! String;
                 let url = NSURL(string: self.baseUrl + "images/" + programmeId + ".jpeg");
@@ -105,7 +104,6 @@ class DataManager: NSObject {
             }
             emotionsArray[emotionKey] = mediaArray;
         }
-        print(emotionsArray.count);
         return emotionsArray;
     }
 }
