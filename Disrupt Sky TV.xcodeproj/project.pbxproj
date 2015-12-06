@@ -18,6 +18,7 @@
 		6E8471521C133EE600099D29 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8471511C133EE600099D29 /* Film.swift */; };
 		6E8471541C133F0200099D29 /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8471531C133F0200099D29 /* TVShow.swift */; };
 		6E84715E1C13A80B00099D29 /* FaceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E84715D1C13A80B00099D29 /* FaceImageView.m */; };
+		6E8471621C13B94000099D29 /* video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 6E84715F1C13B82100099D29 /* video.mp4 */; };
 		A70F2D381C134FEB0009EDF4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70F2D371C134FEB0009EDF4 /* HomeViewController.swift */; };
 		A70F2D3A1C1352850009EDF4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70F2D391C1352850009EDF4 /* DataManager.swift */; };
 		A76E94AA1C13753000D4E73B /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76E94A91C13753000D4E73B /* ResumeCell.swift */; };
@@ -61,6 +62,7 @@
 		6E84715B1C13A80A00099D29 /* Disrupt Sky TV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Disrupt Sky TV-Bridging-Header.h"; sourceTree = "<group>"; };
 		6E84715C1C13A80B00099D29 /* FaceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceImageView.h; sourceTree = "<group>"; };
 		6E84715D1C13A80B00099D29 /* FaceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceImageView.m; sourceTree = "<group>"; };
+		6E84715F1C13B82100099D29 /* video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = video.mp4; path = "Disrupt Sky TV/video.mp4"; sourceTree = "<group>"; };
 		A70F2D371C134FEB0009EDF4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A70F2D391C1352850009EDF4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A76E94A91C13753000D4E73B /* ResumeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeCell.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		6E21C30D1C13350300133981 = {
 			isa = PBXGroup;
 			children = (
+				6E84715F1C13B82100099D29 /* video.mp4 */,
 				6E84715C1C13A80B00099D29 /* FaceImageView.h */,
 				6E84715D1C13A80B00099D29 /* FaceImageView.m */,
 				6E21C3181C13350300133981 /* Disrupt Sky TV */,
@@ -273,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E8471621C13B94000099D29 /* video.mp4 in Resources */,
 				6E21C3241C13350300133981 /* LaunchScreen.storyboard in Resources */,
 				6E21C3211C13350300133981 /* Assets.xcassets in Resources */,
 				6E21C31F1C13350300133981 /* Main.storyboard in Resources */,

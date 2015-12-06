@@ -8,11 +8,17 @@
 
 import UIKit
 import MapKit
+import AVKit
+import AVFoundation
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
     var locationManager: CLLocationManager?
     var media: [Media] = []
+    var moviePlayerVC = AVPlayerViewController();
+    var videoPlaying = false;
+    private var firstAppear = true
+    
     @IBOutlet var collectionView: UICollectionView!
     
     let timeLabel = UILabel()
@@ -54,6 +60,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         
         updateTime()
         var _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateTime", userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if(self.moviePlayerVC.player?.rate == 0){
+            //Dismissed
+            self.moviePlayerVC.player = nil;
+            performSegueWithIdentifier("showRateView", sender: self)
+        }
     }
     
     func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
@@ -151,6 +165,37 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             return CGSizeMake(contentWidth - 5, contentWidth / 2)
         }
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            if firstAppear {
+                do {
+                    try playVideo()
+                    firstAppear = false
+                } catch AppError.InvalidResource(let name, let type) {
+                    debugPrint("Could not find resource \(name).\(type)")
+                } catch {
+                    debugPrint("Generic error")
+                }
+                
+            }
+        }
+    }
+    
+    private func playVideo() throws {
+        guard let path = NSBundle.mainBundle().pathForResource("video", ofType: "mp4") else {
+            throw AppError.InvalidResource("video", "mp4")
+        }
+        let player = AVPlayer(URL: NSURL(fileURLWithPath: path))
+        self.moviePlayerVC.player = player
+        self.presentViewController(self.moviePlayerVC, animated: true) {
+            player.play()
+        }
+    }
+    
+    enum AppError: ErrorType {
+        case InvalidResource(String, String)
     }
     
     /*
