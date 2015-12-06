@@ -19,7 +19,7 @@ class DataManager: NSObject {
         return Static.instance
     }
 
-    func apiRequest(location: CLLocationCoordinate2D, time: NSDate, callback: (succeeded: Bool, request: Dictionary<Emotion, [Media]>) -> ()){
+    func apiRequest(location: CLLocationCoordinate2D, time: NSDate, callback: (Bool, Dictionary<Emotion, [Media]>) -> ()){
         let defaults = NSUserDefaults.standardUserDefaults();
         let subscriberId = defaults.objectForKey("subscriberId") as! String;
         let deviceId = defaults.objectForKey("deviceId") as! String;
@@ -34,7 +34,7 @@ class DataManager: NSObject {
         post(params, url: self.baseUrl + "api/", postCompleted: callback)
     }
     
-    private func post(params : Dictionary<String, String>, url : String, postCompleted : (succeeded: Bool, request: Dictionary<Emotion, [Media]>) -> ()) {
+    private func post(params : Dictionary<String, String>, url : String, postCompleted: (Bool, Dictionary<Emotion, [Media]>) -> ()) {
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
@@ -52,7 +52,7 @@ class DataManager: NSObject {
                 do{
                     json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
                 }catch{
-                    postCompleted(succeeded: false, request: Dictionary<Emotion, [Media]>())
+                    postCompleted(false, Dictionary<Emotion, [Media]>())
                     return;
                 }
                 
@@ -60,7 +60,7 @@ class DataManager: NSObject {
                 // check and make sure that json has a value using optional binding.
                 if let parseJSON = json {
                     let message = parseJSON["message"] as? String;
-                    postCompleted(succeeded: (message == nil), request: self.jsonToObjects(parseJSON))
+                    postCompleted((message == nil), self.jsonToObjects(parseJSON))
                     return
                 }
                 else {
@@ -71,7 +71,7 @@ class DataManager: NSObject {
             })
             task.resume()
         }catch{
-            postCompleted(succeeded: false, request: Dictionary<Emotion, [Media]>())
+            postCompleted(false, Dictionary<Emotion, [Media]>())
         }
         
         

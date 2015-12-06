@@ -80,6 +80,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func oneTapped(){
+        self.time = self.time.dateByAddingTimeInterval(7200);
+        print(self.time);
+        updateTime();
         DataManager.sharedInstance.apiRequest(CLLocationCoordinate2D(), time: self.time, callback: updateCollectionView)
     }
     
@@ -180,9 +183,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             self.collectionView.layoutIfNeeded();
         });
         
-        self.time = self.time.dateByAddingTimeInterval(7200);
-        print(self.time);
-        updateTime();
         if(succeeded){
             let test = UIAlertController(title: "Melanie has arrived home.", message: "We've adjusted your content suggestions.", preferredStyle: UIAlertControllerStyle.Alert);
             let cancelAction = UIAlertAction(title: "OK", style: .Default) { (action) in
