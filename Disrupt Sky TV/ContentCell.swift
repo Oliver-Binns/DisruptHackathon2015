@@ -10,4 +10,5 @@ import UIKit
 
 class ContentCell: UICollectionViewCell {
     @IBOutlet weak var showImageView: UIImageView!
+    @IBOutlet weak var showTitleLabel: UILabel!
 }

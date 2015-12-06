@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="H6J-VZ-sRi">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -41,10 +42,6 @@
                                                         <constraint firstAttribute="height" constant="154" id="cjQ-nW-LDn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZZ-I4-gpp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
-                                                    <animations/>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resume 'Show Title'" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8I-wW-aok">
                                                     <rect key="frame" x="0.0" y="8" width="580" height="138"/>
                                                     <animations/>
@@ -55,6 +52,13 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZZ-I4-gpp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="154"/>
+                                                    <animations/>
+                                                    <connections>
+                                                        <segue destination="BoF-uz-SWU" kind="presentation" id="9Zi-To-HHm"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -85,20 +89,48 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                     <animations/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Gradient" translatesAutoresizingMaskIntoConstraints="NO" id="Jrj-ng-Ybi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gva-ep-5ou">
+                                                    <rect key="frame" x="8" y="112" width="134" height="30"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="vek-Dg-BlD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <animations/>
                                         <constraints>
+                                            <constraint firstItem="gva-ep-5ou" firstAttribute="trailing" secondItem="pfP-ir-0XC" secondAttribute="trailingMargin" id="7Up-Jd-aTH"/>
                                             <constraint firstItem="zuB-1Y-GxH" firstAttribute="leading" secondItem="pfP-ir-0XC" secondAttribute="leading" id="7fX-96-l4L"/>
                                             <constraint firstItem="zuB-1Y-GxH" firstAttribute="top" secondItem="pfP-ir-0XC" secondAttribute="top" id="I6L-dS-kwB"/>
+                                            <constraint firstItem="gva-ep-5ou" firstAttribute="top" secondItem="pfP-ir-0XC" secondAttribute="topMargin" constant="104" id="LMW-mN-qjv"/>
+                                            <constraint firstItem="gva-ep-5ou" firstAttribute="leading" secondItem="pfP-ir-0XC" secondAttribute="leadingMargin" id="Ma7-16-LGC"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jrj-ng-Ybi" secondAttribute="trailing" id="OQ4-dh-vlj"/>
                                             <constraint firstAttribute="trailing" secondItem="zuB-1Y-GxH" secondAttribute="trailing" id="Ygc-D8-ufA"/>
+                                            <constraint firstAttribute="bottom" secondItem="Jrj-ng-Ybi" secondAttribute="bottom" id="ab3-oO-xxA"/>
+                                            <constraint firstItem="Jrj-ng-Ybi" firstAttribute="leading" secondItem="pfP-ir-0XC" secondAttribute="leading" id="b3c-6o-efI"/>
+                                            <constraint firstItem="Jrj-ng-Ybi" firstAttribute="top" secondItem="pfP-ir-0XC" secondAttribute="top" id="rSK-Xr-bco"/>
+                                            <constraint firstAttribute="bottom" secondItem="gva-ep-5ou" secondAttribute="bottom" constant="8" id="zUm-y4-KIv"/>
                                             <constraint firstAttribute="bottom" secondItem="zuB-1Y-GxH" secondAttribute="bottom" id="zs7-io-0bK"/>
                                         </constraints>
                                         <size key="customSize" width="150" height="150"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="LMW-mN-qjv"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="showImageView" destination="zuB-1Y-GxH" id="YsP-P6-TfU"/>
+                                            <outlet property="showTitleLabel" destination="gva-ep-5ou" id="xzU-Ea-WfR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -125,6 +157,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cy3-DN-u5B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1082" y="-336"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="4g4-Ic-9HC">
+            <objects>
+                <viewController id="BoF-uz-SWU" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OhG-hO-H0S"/>
+                        <viewControllerLayoutGuide type="bottom" id="mak-1y-vZL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zYS-Wf-iHm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Zq-Jn-sAh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1838" y="-336"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -192,6 +243,7 @@
     </scenes>
     <resources>
         <image name="Content Image Demo" width="133" height="75"/>
+        <image name="Gradient" width="229" height="229"/>
         <image name="Resume Image Demo" width="133" height="75"/>
     </resources>
 </document>
