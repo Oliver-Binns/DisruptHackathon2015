@@ -37,7 +37,7 @@ class ViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
         
-        print(locationManager.location)
+        //print(locationManager.location)
     }
     
     

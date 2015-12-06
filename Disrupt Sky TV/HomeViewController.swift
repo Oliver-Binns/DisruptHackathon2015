@@ -17,12 +17,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     var media = Dictionary<Emotion, [Media]>();
     var moviePlayerVC = AVPlayerViewController();
     var videoPlaying = false;
+    var time = NSDate(timeIntervalSince1970: NSTimeInterval(1449387425));
+    
     private var firstAppear = true
     
     @IBOutlet var collectionView: UICollectionView!
     
-    let timeLabel = UILabel()
-    let navView = UIView()
+    var timeLabel = UILabel()
+    var navView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             self.locationManager!.requestWhenInUseAuthorization()
         }
         
-        let rightBarButtonItemOne: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Settings Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "oneTapped:")
+        let rightBarButtonItemOne: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Settings Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "oneTapped")
         rightBarButtonItemOne.tintColor = UIColor.whiteColor()
         let rightBarButtonItemTwo: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "Notification Icon"), style: UIBarButtonItemStyle.Plain, target: self, action: "twoTapped:")
         rightBarButtonItemTwo.tintColor = UIColor.whiteColor()
@@ -70,7 +72,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         self.navigationItem.titleView = navView
         
         updateTime()
-        var _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateTime", userInfo: nil, repeats: true)
+        //var _ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateTime", userInfo: nil, repeats: true)
+        //var _ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "updateLocation", userInfo: nil, repeats: true)
+    }
+    
+    func oneTapped(){
+        DataManager.sharedInstance.apiRequest(CLLocationCoordinate2D(), time: self.time, callback: updateCollectionView)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -82,22 +89,33 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
-        DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: updateCollectionView)
+        DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, time: self.time, callback: updateCollectionView)
     }
     
     func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
         if(newLocation.distanceFromLocation(oldLocation) > 500){
-            DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, callback: updateCollectionView)
+            DataManager.sharedInstance.apiRequest(self.locationManager!.location!.coordinate, time: self.time, callback: updateCollectionView)
         }
     }
     
     func updateCollectionView(succeeded: Bool, request: Dictionary<Emotion, [Media]>){
-        self.media = request
-        
+        self.media = request;
         dispatch_async(dispatch_get_main_queue(), {
             self.collectionView.reloadData()
             self.collectionView.layoutIfNeeded();
         });
+        
+        self.time = self.time.dateByAddingTimeInterval(7200);
+        print(self.time);
+        updateTime();
+        if(succeeded){
+            let test = UIAlertController(title: "Melanie has arrived home.", message: "We've adjusted your content suggestions.", preferredStyle: UIAlertControllerStyle.Alert);
+            let cancelAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+                // ...
+            }
+            test.addAction(cancelAction)
+            self.presentViewController(test, animated: true, completion: nil);
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -118,10 +136,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     
     func updateTime() {
-        let date = NSDate()
         let calendar = NSCalendar.currentCalendar()
         let unit = NSCalendarUnit.Hour.union(.Minute)
-        let components = calendar.components(unit, fromDate: date)
+        let components = calendar.components(unit, fromDate: self.time)
         let hour = components.hour
         let minutes = components.minute
         
@@ -167,7 +184,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         if section == 0 {
             return 1
         }
-        //var emotionCount: Int { return Emotion.Emotion.Cheeky.hashValue + 1}
         return self.media.keys.count;
     }
 
@@ -191,7 +207,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         //let contentWidth = floor(view.frame.width / 4)
         
         if indexPath.section == 0 {
-            return CGSizeMake(resumeWidth - 10, 100)
+            return CGSizeMake(resumeWidth - 10, 150)
         } else {
             return CGSizeMake(resumeWidth - 10, 120)
         }

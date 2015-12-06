@@ -17,7 +17,6 @@ class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     private var media: [Media] = [];
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(media.count);
         return media.count;
     }
     

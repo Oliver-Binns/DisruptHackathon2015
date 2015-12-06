@@ -10,15 +10,16 @@ import UIKit
 import MapKit
 
 class DataManager: NSObject {
-    let baseUrl = "http://localhost:8080/";
+    var baseUrl = "http://localhost:8080/";
+    
     class var sharedInstance: DataManager {
         struct Static {
-            static let instance: DataManager = DataManager()
+            static var instance: DataManager = DataManager()
         }
         return Static.instance
     }
 
-    func apiRequest(location: CLLocationCoordinate2D, callback: (succeeded: Bool, request: Dictionary<Emotion, [Media]>) -> ()){
+    func apiRequest(location: CLLocationCoordinate2D, time: NSDate, callback: (succeeded: Bool, request: Dictionary<Emotion, [Media]>) -> ()){
         let defaults = NSUserDefaults.standardUserDefaults();
         let subscriberId = defaults.objectForKey("subscriberId") as! String;
         let deviceId = defaults.objectForKey("deviceId") as! String;
@@ -26,8 +27,7 @@ class DataManager: NSObject {
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "HH"
-        let timeString = dateFormatter.stringFromDate(NSDate());
-        //print(timeString);
+        let timeString = dateFormatter.stringFromDate(time);
         
         let params = ["time": timeString, "location":locationString, "deviceId":deviceId, "subscriberId":subscriberId] as Dictionary<String, String>
         
@@ -59,13 +59,14 @@ class DataManager: NSObject {
                 // The JSONObjectWithData constructor didn't return an error. But, we should still
                 // check and make sure that json has a value using optional binding.
                 if let parseJSON = json {
-                    postCompleted(succeeded: true, request: self.jsonToObjects(parseJSON))
+                    let message = parseJSON["message"] as? String;
+                    postCompleted(succeeded: (message == nil), request: self.jsonToObjects(parseJSON))
                     return
                 }
                 else {
                     // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
                     let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                    print("Error could not parse JSON: \(jsonStr)")
+                    //print("Error could not parse JSON: \(jsonStr)")
                 }
             })
             task.resume()
@@ -82,7 +83,7 @@ class DataManager: NSObject {
         for(var j = 0; j < emotions.count; j++){
             let jsonArray = json[emotions[j]] as! [NSDictionary];
             var mediaArray: [Media] = [];
-            
+            print(jsonArray.count);
             for(var i = 0; i < jsonArray.count; i++){
                 let mediaDict: NSDictionary = jsonArray[i];
                 //mediaDict[i]["genre"]
@@ -104,7 +105,7 @@ class DataManager: NSObject {
             }
             emotionsArray[emotionKey] = mediaArray;
         }
-        
+        print(emotionsArray.count);
         return emotionsArray;
     }
 }
