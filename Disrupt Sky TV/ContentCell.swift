@@ -12,11 +12,12 @@ class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
     
     
     @IBOutlet var emotionImage: UIImageView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
     private var emotion: Emotion!
     private var media: [Media] = [];
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(media.count);
         return media.count;
     }
     
