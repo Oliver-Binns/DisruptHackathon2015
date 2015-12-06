@@ -27,7 +27,7 @@ class DataManager: NSObject {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "HH"
         let timeString = dateFormatter.stringFromDate(NSDate());
-        print(timeString);
+        //print(timeString);
         
         let params = ["time": timeString, "location":locationString, "deviceId":deviceId, "subscriberId":subscriberId] as Dictionary<String, String>
         
