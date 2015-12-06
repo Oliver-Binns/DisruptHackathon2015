@@ -75,8 +75,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="580" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WB8-Xg-TO5">
-                                                    <rect key="frame" x="158" y="0.0" width="422" height="150"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WB8-Xg-TO5">
+                                                    <rect key="frame" x="150" y="0.0" width="430" height="150"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="pGA-Op-hAA">
@@ -146,6 +146,7 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="WB8-Xg-TO5" secondAttribute="bottom" id="gX1-Td-rr1"/>
                                             <constraint firstItem="7nc-2y-c4A" firstAttribute="leading" secondItem="pfP-ir-0XC" secondAttribute="leading" id="jfd-70-9me"/>
                                             <constraint firstItem="WB8-Xg-TO5" firstAttribute="centerX" secondItem="pfP-ir-0XC" secondAttribute="centerX" id="rUs-GP-Jhe"/>
+                                            <constraint firstItem="WB8-Xg-TO5" firstAttribute="leading" secondItem="7nc-2y-c4A" secondAttribute="trailing" id="w8e-hT-Imw"/>
                                             <constraint firstItem="WB8-Xg-TO5" firstAttribute="leading" secondItem="7nc-2y-c4A" secondAttribute="trailing" id="yJY-90-oqR"/>
                                         </constraints>
                                         <size key="customSize" width="580" height="150"/>
