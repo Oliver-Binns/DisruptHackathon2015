@@ -173,7 +173,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         if indexPath.section == 0 {
             return CGSizeMake(resumeWidth - 10, 140)
         } else {
-            return CGSizeMake(resumeWidth - 10, 140)
+            return CGSizeMake(resumeWidth - 10, 100)
         }
     }
     

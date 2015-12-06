@@ -54,9 +54,9 @@ class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
         //let contentWidth = floor(view.frame.width / 4)
         
         if indexPath.section == 0 {
-            return CGSizeMake(249, 140)
+            return CGSizeMake(249 - 10, 140)
         } else {
-            return CGSizeMake(249, 140)
+            return CGSizeMake(249 - 10, 140)
         }
     }
 }
