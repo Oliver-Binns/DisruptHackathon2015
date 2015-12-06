@@ -77,7 +77,44 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         if(self.moviePlayerVC.player?.rate == 0){
             //Dismissed
             self.moviePlayerVC.player = nil;
-            performSegueWithIdentifier("showRateView", sender: self)
+            
+            var lightBlur = UIBlurEffect()
+            var blurRandomView = UIVisualEffectView()
+            
+            blurRandomView.alpha = 0
+
+            blurRandomView.removeFromSuperview()
+            
+            lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+            blurRandomView = UIVisualEffectView(effect: lightBlur)
+            blurRandomView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+            view.addSubview(blurRandomView)
+            
+            UIView.animateWithDuration(1, animations: {
+                blurRandomView.alpha = 1
+            })
+            
+            let overlayView = UIView()
+            overlayView.frame = CGRectMake(150, 200, view.frame.width - 300, view.frame.height - 600)
+            overlayView.backgroundColor = UIColor.whiteColor()
+            
+            let topLabel = UILabel()
+            topLabel.frame = CGRectMake(10 , 0, overlayView.frame.width - 20, 40)
+            topLabel.text = "What would you like the next show to do?"
+            
+            overlayView.addSubview(topLabel)
+            
+            let buttonOne = UIButton()
+            buttonOne.imageView!.image = UIImage(named: "Sad")
+            buttonOne.frame = CGRectMake(10, 60, (overlayView.frame.width / 3), 40)
+            buttonOne.backgroundColor = UIColorFromRGB(0xDDDDDD)
+            
+            overlayView.addSubview(buttonOne)
+            
+            view.addSubview(overlayView)
+            view.bringSubviewToFront(overlayView)
+            
+            //performSegueWithIdentifier("showRateView", sender: self)
         }
     }
     
@@ -191,7 +228,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         //let contentWidth = floor(view.frame.width / 4)
         
         if indexPath.section == 0 {
-            return CGSizeMake(resumeWidth - 10, 100)
+            return CGSizeMake(resumeWidth - 10, 130)
         } else {
             return CGSizeMake(resumeWidth - 10, 120)
         }

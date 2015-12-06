@@ -11,6 +11,7 @@ import UIKit
 class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource{
     
     
+    @IBOutlet weak var showCounterLabel: UILabel!
     @IBOutlet var emotionImage: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
     private var emotion: Emotion!
@@ -25,7 +26,7 @@ class ContentCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionV
         self.emotion = emotion;
         self.emotionImage.image = emotion.image;
         self.media = media;
-        
+        showCounterLabel.text = String(media.count)
         dispatch_async(dispatch_get_main_queue(), {
             self.collectionView.reloadData();
         });
