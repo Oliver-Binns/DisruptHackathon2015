@@ -13,6 +13,9 @@ import AVFoundation
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate {
 
+    var lightBlur = UIBlurEffect()
+    var blurRandomView = UIVisualEffectView()
+    let overlayView = UIView()
     var locationManager: CLLocationManager?
     var media = Dictionary<Emotion, [Media]>();
     var moviePlayerVC = AVPlayerViewController();
@@ -84,8 +87,80 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         if(self.moviePlayerVC.player?.rate == 0){
             //Dismissed
             self.moviePlayerVC.player = nil;
-            performSegueWithIdentifier("showRateView", sender: self)
+            
+            blurRandomView.alpha = 0
+            overlayView.alpha = 0
+
+            blurRandomView.removeFromSuperview()
+            
+            lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            blurRandomView = UIVisualEffectView(effect: lightBlur)
+            blurRandomView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+            view.addSubview(blurRandomView)
+            
+            UIView.animateWithDuration(1, animations: {
+                self.blurRandomView.alpha = 1
+            })
+            
+            overlayView.frame = CGRectMake(120, 320, view.frame.width - 240, view.frame.height - 600)
+            overlayView.backgroundColor = UIColor.whiteColor()
+            
+            let topLabel = UILabel()
+            topLabel.frame = CGRectMake(10 , 0, overlayView.frame.width - 20, 40)
+            topLabel.text = "What would you like the next show to do?"
+            
+            overlayView.addSubview(topLabel)
+            
+            let buttonOne = UIButton()
+            buttonOne.setImage(UIImage(named: "Sad"), forState: UIControlState.Normal)
+            buttonOne.frame = CGRectMake(10, 40, (overlayView.frame.width / 3) - 15, 135)
+            buttonOne.backgroundColor = UIColorFromRGB(0xDDDDDD)
+            buttonOne.addTarget(self, action: "buttonOneTapped", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            overlayView.addSubview(buttonOne)
+            
+            let buttonTwo = UIButton()
+            buttonTwo.setImage(UIImage(named: "Happy"), forState: UIControlState.Normal)
+            buttonTwo.frame = CGRectMake(172.5, 40, (overlayView.frame.width / 3) - 15, 135)
+            buttonTwo.backgroundColor = UIColorFromRGB(0xDDDDDD)
+            buttonTwo.addTarget(self, action: "removeOverlays", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            overlayView.addSubview(buttonTwo)
+            
+            let buttonThree = UIButton()
+            buttonThree.setImage(UIImage(named: "Love"), forState: UIControlState.Normal)
+            buttonThree.frame = CGRectMake(335, 40, (overlayView.frame.width / 3) - 15, 135)
+            buttonThree.backgroundColor = UIColorFromRGB(0xDDDDDD)
+            buttonTwo.addTarget(self, action: "removeOverlays", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            overlayView.addSubview(buttonThree)
+            
+            let closeButton = UIButton()
+            closeButton.setImage(UIImage(named: "Cross"), forState: UIControlState.Normal)
+            closeButton.frame = CGRectMake(overlayView.frame.width - 30, 10, 20, 20)
+            closeButton.addTarget(self, action: "removeOverlays", forControlEvents: UIControlEvents.TouchUpInside)
+            
+            overlayView.addSubview(closeButton)
+            
+            UIView.animateWithDuration(1, animations: {
+                self.blurRandomView.alpha = 1
+                self.overlayView.alpha = 1
+            })
+            
+            blurRandomView.addSubview(overlayView)
+            
+            //performSegueWithIdentifier("showRateView", sender: self)
         }
+    }
+    
+    func removeOverlays() {
+        UIView.animateWithDuration(1, animations: {
+            self.overlayView.alpha = 0
+            self.blurRandomView.alpha = 0
+        }, completion: { (finished:Bool) in
+            self.blurRandomView.removeFromSuperview()
+            self.overlayView.removeFromSuperview()
+        })
     }
     
     func locationManagerDidResumeLocationUpdates(manager: CLLocationManager) {
@@ -215,16 +290,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 {
-            if firstAppear {
-                do {
-                    try playVideo()
-                    firstAppear = false
-                } catch AppError.InvalidResource(let name, let type) {
-                    debugPrint("Could not find resource \(name).\(type)")
-                } catch {
-                    debugPrint("Generic error")
-                }
-                
+            do {
+                try playVideo()
+            } catch AppError.InvalidResource(let name, let type) {
+                debugPrint("Could not find resource \(name).\(type)")
+            } catch {
+                debugPrint("Generic error")
             }
         }
     }
