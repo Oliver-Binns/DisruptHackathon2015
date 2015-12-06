@@ -162,7 +162,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         
         timeLabel.attributedText = attributedString
         
-        self.navigationItem.titleView = timeLabel
+        self.navigationItem.titleView = navView
     }
 
     override func didReceiveMemoryWarning() {
