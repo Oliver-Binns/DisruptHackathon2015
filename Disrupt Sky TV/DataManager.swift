@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class DataManager: NSObject {
+    let baseUrl = "http://localhost:8080/";
     class var sharedInstance: DataManager {
         struct Static {
             static let instance: DataManager = DataManager()
@@ -23,9 +24,14 @@ class DataManager: NSObject {
         let deviceId = defaults.objectForKey("deviceId") as! String;
         let locationString = String(format: "%f;%f", location.latitude, location.longitude);
         
-        let params = ["location":locationString, "deviceId":deviceId, "subscriberId":subscriberId] as Dictionary<String, String>
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH"
+        let timeString = dateFormatter.stringFromDate(NSDate());
+        print(timeString);
         
-        post(params, url: "http://localhost:8080/api/", postCompleted: callback)
+        let params = ["time": timeString, "location":locationString, "deviceId":deviceId, "subscriberId":subscriberId] as Dictionary<String, String>
+        
+        post(params, url: self.baseUrl + "api/", postCompleted: callback)
     }
     
     private func post(params : Dictionary<String, String>, url : String, postCompleted : (succeeded: Bool, request: [Media]) -> ()) {
@@ -78,7 +84,7 @@ class DataManager: NSObject {
             let mediaDict: NSDictionary = jsonArray[i];
             //mediaDict[i]["genre"]
             let programmeId = mediaDict["programmeId"] as! String;
-            let url = NSURL(string: "http://localhost:8080/images/" + programmeId + ".jpeg");
+            let url = NSURL(string: self.baseUrl + "images/" + programmeId + ".jpeg");
             let media: Media = Media(title: mediaDict["name"] as? String, duration: 0, genre: Media.Genre.Kids, subGenre: "", channel: "", image: url);
             mediaArray.append(media);
         }
