@@ -18,7 +18,7 @@ class DataManager: NSObject {
         return Static.instance
     }
 
-    func apiRequest(location: CLLocationCoordinate2D, callback: (succeeded: Bool, request: [Media]) -> ()){
+    func apiRequest(location: CLLocationCoordinate2D, callback: (succeeded: Bool, request: Dictionary<NSObject, [Media]>) -> ()){
         let defaults = NSUserDefaults.standardUserDefaults();
         let subscriberId = defaults.objectForKey("subscriberId") as! String;
         let deviceId = defaults.objectForKey("deviceId") as! String;
@@ -34,7 +34,7 @@ class DataManager: NSObject {
         post(params, url: self.baseUrl + "api/", postCompleted: callback)
     }
     
-    private func post(params : Dictionary<String, String>, url : String, postCompleted : (succeeded: Bool, request: [Media]) -> ()) {
+    private func post(params : Dictionary<String, String>, url : String, postCompleted : (succeeded: Bool, request: Dictionary<NSObject, [Media]>) -> ()) {
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
@@ -52,7 +52,7 @@ class DataManager: NSObject {
                 do{
                     json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
                 }catch{
-                    postCompleted(succeeded: false, request: [])
+                    postCompleted(succeeded: false, request: Dictionary<NSObject, [Media]>())
                     return;
                 }
                 
@@ -70,25 +70,30 @@ class DataManager: NSObject {
             })
             task.resume()
         }catch{
-            postCompleted(succeeded: false, request: [])
+            postCompleted(succeeded: false, request: Dictionary<NSObject, [Media]>())
         }
         
         
     }
     
-    func jsonToObjects(json: NSDictionary) -> [Media]{
-        let jsonArray = json["recommendations"] as! [NSDictionary];
-        var mediaArray: [Media] = [];
-        
-        for(var i = 0; i < jsonArray.count; i++){
-            let mediaDict: NSDictionary = jsonArray[i];
-            //mediaDict[i]["genre"]
-            let programmeId = mediaDict["programmeId"] as! String;
-            let url = NSURL(string: self.baseUrl + "images/" + programmeId + ".jpeg");
-            let media: Media = Media(title: mediaDict["name"] as? String, duration: 0, genre: Media.Genre.Kids, subGenre: "", channel: "", image: url);
-            mediaArray.append(media);
+    func jsonToObjects(json: NSDictionary) -> Dictionary<NSObject, [Media]>{
+        let emotions = ["positive", "negative", "neutral"];
+        var emotionsArray = Dictionary<NSObject, [Media]>();
+        for(var j = 0; j < emotions.count; j++){
+            let jsonArray = json[emotions[j]] as! [NSDictionary];
+            var mediaArray: [Media] = [];
+            
+            for(var i = 0; i < jsonArray.count; i++){
+                let mediaDict: NSDictionary = jsonArray[i];
+                //mediaDict[i]["genre"]
+                let programmeId = mediaDict["programmeId"] as! String;
+                let url = NSURL(string: self.baseUrl + "images/" + programmeId + ".jpeg");
+                let media: Media = Media(title: mediaDict["name"] as? String, duration: 0, genre: Media.Genre.Kids, subGenre: "", channel: "", image: url);
+                mediaArray.append(media);
+            }
+            emotionsArray[NSObject()] = mediaArray;
         }
         
-        return mediaArray;
+        return emotionsArray;
     }
 }
