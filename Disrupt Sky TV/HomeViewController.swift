@@ -136,6 +136,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("contentCell", forIndexPath: indexPath) as! ContentCell
             
             cell.showImageView.image = media[indexPath.row].image
+            cell.showTitleLabel.text = media[indexPath.row].title
             
             return cell
         }

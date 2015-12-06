@@ -17,10 +17,11 @@
 		6E8471501C133EC900099D29 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E84714F1C133EC900099D29 /* Media.swift */; };
 		6E8471521C133EE600099D29 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8471511C133EE600099D29 /* Film.swift */; };
 		6E8471541C133F0200099D29 /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8471531C133F0200099D29 /* TVShow.swift */; };
-		A70F2D381C134FEB0009EDF4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70F2D371C134FEB0009EDF4 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		A70F2D3A1C1352850009EDF4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70F2D391C1352850009EDF4 /* DataManager.swift */; settings = {ASSET_TAGS = (); }; };
-		A76E94AA1C13753000D4E73B /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76E94A91C13753000D4E73B /* ResumeCell.swift */; settings = {ASSET_TAGS = (); }; };
-		A76E94AC1C13753700D4E73B /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76E94AB1C13753700D4E73B /* ContentCell.swift */; settings = {ASSET_TAGS = (); }; };
+		6E84715E1C13A80B00099D29 /* FaceImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E84715D1C13A80B00099D29 /* FaceImageView.m */; };
+		A70F2D381C134FEB0009EDF4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70F2D371C134FEB0009EDF4 /* HomeViewController.swift */; };
+		A70F2D3A1C1352850009EDF4 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70F2D391C1352850009EDF4 /* DataManager.swift */; };
+		A76E94AA1C13753000D4E73B /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76E94A91C13753000D4E73B /* ResumeCell.swift */; };
+		A76E94AC1C13753700D4E73B /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76E94AB1C13753700D4E73B /* ContentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,9 @@
 		6E84714F1C133EC900099D29 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		6E8471511C133EE600099D29 /* Film.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		6E8471531C133F0200099D29 /* TVShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
+		6E84715B1C13A80A00099D29 /* Disrupt Sky TV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Disrupt Sky TV-Bridging-Header.h"; sourceTree = "<group>"; };
+		6E84715C1C13A80B00099D29 /* FaceImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceImageView.h; sourceTree = "<group>"; };
+		6E84715D1C13A80B00099D29 /* FaceImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceImageView.m; sourceTree = "<group>"; };
 		A70F2D371C134FEB0009EDF4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A70F2D391C1352850009EDF4 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		A76E94A91C13753000D4E73B /* ResumeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResumeCell.swift; sourceTree = "<group>"; };
@@ -91,10 +95,13 @@
 		6E21C30D1C13350300133981 = {
 			isa = PBXGroup;
 			children = (
+				6E84715C1C13A80B00099D29 /* FaceImageView.h */,
+				6E84715D1C13A80B00099D29 /* FaceImageView.m */,
 				6E21C3181C13350300133981 /* Disrupt Sky TV */,
 				6E21C32D1C13350300133981 /* Disrupt Sky TVTests */,
 				6E21C3381C13350400133981 /* Disrupt Sky TVUITests */,
 				6E21C3171C13350300133981 /* Products */,
+				6E84715B1C13A80A00099D29 /* Disrupt Sky TV-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -294,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E21C31C1C13350300133981 /* ViewController.swift in Sources */,
+				6E84715E1C13A80B00099D29 /* FaceImageView.m in Sources */,
 				6E8471521C133EE600099D29 /* Film.swift in Sources */,
 				6E21C31A1C13350300133981 /* AppDelegate.swift in Sources */,
 				A76E94AC1C13753700D4E73B /* ContentCell.swift in Sources */,
@@ -443,11 +451,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = "Disrupt Sky TV/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AndrewWalker.Disrupt-Sky-TV";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Disrupt Sky TV-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -456,11 +468,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = "Disrupt Sky TV/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.AndrewWalker.Disrupt-Sky-TV";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Disrupt Sky TV-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
