@@ -282,7 +282,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate {
         //let contentWidth = floor(view.frame.width / 4)
         
         if indexPath.section == 0 {
-            return CGSizeMake(resumeWidth - 10, 150)
+            return CGSizeMake(resumeWidth - 10, 130)
         } else {
             return CGSizeMake(resumeWidth - 10, 120)
         }
